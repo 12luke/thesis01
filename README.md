@@ -1,8 +1,8 @@
 # thesis01
-A Scalable Machine Learning Framework for Automated Financial Statement Reconciliation and Anomaly Detection in Large-Scale Corporate Accounting
+## A Scalable Machine Learning Framework for Automated Financial Statement Reconciliation and Anomaly Detection in Large-Scale Corporate Accounting
 
-## Fully developed Model
-# Install package
+### Fully developed Model
+### Install package
 !pip install pyod
 !pip install pyod rapidfuzz datasketch
 !pip install imbalanced-learn
