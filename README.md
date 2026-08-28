@@ -7,7 +7,7 @@
 !pip install imbalanced-learn
 import pandas as pd
 
-path='C:/Users/NDL/Downloads/paysim_dataset.csv'
+path='C:/Users/Downloads/paysim_dataset.csv'
 
 df = pd.read_csv(path)
 
@@ -46,7 +46,7 @@ print(fraud_counts.astype(int))
 
 import pandas as pd
 
-path='C:/Users/NDL/Downloads/paysim_dataset.csv'
+path='C:/Users/Downloads/paysim_dataset.csv'
 
 ### Load dataset
 df = pd.read_csv(path)
@@ -81,7 +81,7 @@ print("\nShape:")
 print(balanced_df.shape)
 
 balanced_df.to_csv(
-'C:/Users/NDL/Downloads/paysim_dataset.csv',
+'C:/Users/Downloads/paysim_dataset.csv',
 index=False
 )
 
