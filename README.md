@@ -87,6 +87,105 @@ index=False
 
 df = balanced_df
 
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+
+sns.set_theme(style="whitegrid", palette="muted")
+plt.rcParams.update({"font.size": 11})
+
+# Replace df_raw_counts and df_balanced_counts with your actual Series/counts
+df_raw_counts = pd.Series({0: 1634387, 1: 8213})
+df_balanced_counts = pd.Series({0: 8213, 1: 8213})
+
+fig, ax = plt.subplots(figsize=(7, 5))
+
+categories = ["Original Data", "Balanced Subsample"]
+legitimate_counts = [df_raw_counts[0], df_balanced_counts[0]]
+fraud_counts = [df_raw_counts[1], df_balanced_counts[1]]
+
+x = np.arange(len(categories))
+width = 0.35
+
+rects1 = ax.bar(
+    x - width / 2,
+    legitimate_counts,
+    width,
+    label="Legitimate (0)",
+    color="#2b5c8f",
+)
+rects2 = ax.bar(
+    x + width / 2, fraud_counts, width, label="Fraudulent (1)", color="#d95f02"
+)
+
+ax.set_ylabel("Number of Transactions (Log Scale)")
+ax.set_title("Class Distribution: Before vs. After Sampling", fontweight="bold")
+ax.set_xticks(x)
+ax.set_xticklabels(categories)
+ax.set_yscale("log")
+ax.legend()
+
+ax.bar_label(rects1, padding=3, fmt="%d")
+ax.bar_label(rects2, padding=3, fmt="%d")
+
+plt.tight_layout()
+plt.show()
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.set_theme(style="whitegrid")
+plt.rcParams.update({"font.size": 11})
+
+fig, ax = plt.subplots(figsize=(7, 5))
+
+sns.boxplot(
+    data=balanced_df,
+    x="isFraud",
+    y="amount",
+    hue="isFraud",
+    palette=["#2b5c8f", "#d95f02"],
+    legend=False,
+    ax=ax,
+    showfliers=True,
+)
+
+ax.set_yscale("log")
+ax.set_xticks([0, 1])
+ax.set_xticklabels(["Legitimate (0)", "Fraudulent (1)"])
+ax.set_xlabel("Transaction Class")
+ax.set_ylabel("Transaction Amount (Log Scale)")
+ax.set_title("Transaction Amount Distribution by Class", fontweight="bold")
+
+plt.tight_layout()
+plt.show()
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.set_theme(style="whitegrid")
+plt.rcParams.update({"font.size": 11})
+
+fig, ax = plt.subplots(figsize=(8, 5))
+
+sns.countplot(
+    data=balanced_df,
+    x="type",
+    hue="isFraud",
+    palette=["#2b5c8f", "#d95f02"],
+    ax=ax,
+)
+
+ax.set_xlabel("Transaction Type")
+ax.set_ylabel("Transaction Count")
+ax.set_title("Transaction Types Breakdown by Class", fontweight="bold")
+ax.legend(title="Class", labels=["Legitimate", "Fraudulent"])
+plt.xticks(rotation=15)
+
+plt.tight_layout()
+plt.show()
+
 import numpy as np
 import pandas as pd
 
